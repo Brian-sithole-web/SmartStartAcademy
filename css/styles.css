@@ -349,7 +349,7 @@ h3 {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 32%;
   opacity: 0;
   transform: scale(1.06);
   transition: opacity 1.1s var(--ease), transform 8s linear;
@@ -463,6 +463,7 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 24%;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
@@ -567,10 +568,11 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   border-radius: 18px;
 }
 
-.photo-mosaic a:first-child {
+.photo-mosaic > :first-child {
   grid-row: 1 / 3;
 }
 
@@ -597,20 +599,21 @@ h3 {
 }
 
 .social-band img {
-  height: 360px;
+  height: 420px;
   width: 100%;
   object-fit: cover;
+  object-position: center 28%;
   border-radius: var(--radius);
 }
 
 .page-hero {
   position: relative;
-  min-height: 360px;
+  min-height: 420px;
   display: grid;
   align-items: end;
   color: var(--paper);
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
 }
 
 .page-hero::after {
@@ -650,11 +653,12 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 28%;
   transition: transform 0.6s var(--ease);
 }
 
-.gallery-grid a:hover img {
-  transform: scale(1.06);
+.gallery-grid img.focus-center {
+  object-position: center;
 }
 
 .gallery-grid a:nth-child(3n) {
@@ -844,8 +848,9 @@ textarea {
 
 .team-feature img {
   width: 100%;
-  height: 460px;
+  height: 520px;
   object-fit: cover;
+  object-position: center 18%;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
@@ -857,7 +862,7 @@ textarea {
 
 .program-item {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 24px;
   background: var(--paper);
   border-radius: var(--radius);
@@ -868,12 +873,109 @@ textarea {
 .program-item img {
   width: 100%;
   height: 100%;
-  min-height: 180px;
+  min-height: 210px;
   object-fit: cover;
+  object-position: center 22%;
 }
 
 .program-item div {
   padding: 24px 24px 24px 0;
+}
+
+.branch-grid,
+.fee-grid,
+.educator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.branch-card,
+.fee-card,
+.educator {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.branch-body,
+.fee-card,
+.educator-copy {
+  padding: 28px;
+}
+
+.branch-card .map-frame {
+  min-height: 260px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fee-card {
+  border-top: 4px solid var(--gold);
+}
+
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.fee-table th,
+.fee-table td {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: baseline;
+}
+
+.fee-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.fee-table td {
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.fee-table td span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.educator img {
+  width: 100%;
+  height: 460px;
+  object-fit: contain;
+  background:
+    radial-gradient(circle at top, rgba(196, 160, 86, 0.16), transparent 55%),
+    var(--ivory);
+}
+
+.educator-copy h3 {
+  margin-bottom: 6px;
+}
+
+.educator-role {
+  color: var(--teal);
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.subjects {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 @keyframes rise {
@@ -886,7 +988,10 @@ textarea {
 @media (max-width: 1024px) {
   .why-grid,
   .card-grid,
-  .footer-grid {
+  .footer-grid,
+  .branch-grid,
+  .fee-grid,
+  .educator-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -948,12 +1053,19 @@ textarea {
   .footer-grid,
   .form-row,
   .gallery-grid,
-  .photo-mosaic {
+  .photo-mosaic,
+  .branch-grid,
+  .fee-grid,
+  .educator-grid {
     grid-template-columns: 1fr;
   }
 
+  .educator img {
+    height: 520px;
+  }
+
   .photo-mosaic,
-  .photo-mosaic a:first-child {
+  .photo-mosaic > :first-child {
     grid-row: auto;
     height: 240px;
   }

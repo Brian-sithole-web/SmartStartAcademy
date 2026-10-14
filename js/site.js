@@ -4,11 +4,21 @@ const SITE = {
   phoneHref: "tel:+27101020574",
   whatsappDisplay: "082 842 5845",
   whatsappHref: "https://wa.me/27828425845",
-  address: "30 9th Avenue, Orange Grove, Johannesburg, 2192",
   facebook: "https://www.facebook.com/people/Smart-Start-Academy-and-Daycare/61565348087602/",
-  mapsDirections: "https://www.google.com/maps/dir/?api=1&destination=30+9th+Avenue,+Orange+Grove,+Johannesburg,+2192",
+  tiktok: "https://www.tiktok.com/@smartstartacademy?_r=1&_t=ZS-9AWm5gvJY72",
+  tiktokHandle: "@SmartStartAcademy",
   hoursWeekday: "Monday–Friday · 06:00–17:30",
-  hoursSaturday: "Saturday · 07:30–14:30"
+  hoursSaturday: "Saturday · 07:30–14:30",
+  branches: [
+    {
+      name: "Orange Grove",
+      address: "80 13th Street, Orange Grove"
+    },
+    {
+      name: "Kew",
+      address: "119 9th Road, Kew"
+    }
+  ]
 };
 
 const NAV_ITEMS = [
@@ -75,7 +85,7 @@ function renderFooter() {
         </div>
         <div>
           <h3>Visit</h3>
-          <p>${SITE.address}</p>
+          ${SITE.branches.map((branch) => `<p><strong>${branch.name}</strong><br>${branch.address}</p>`).join("")}
           <p>${SITE.hoursWeekday}<br>${SITE.hoursSaturday}</p>
         </div>
         <div>
@@ -84,6 +94,7 @@ function renderFooter() {
             <a href="${SITE.phoneHref}">${SITE.phoneDisplay}</a>
             <a href="${SITE.whatsappHref}">WhatsApp ${SITE.whatsappDisplay}</a>
             <a href="${SITE.facebook}" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="${SITE.tiktok}" target="_blank" rel="noreferrer">TikTok ${SITE.tiktokHandle}</a>
           </div>
         </div>
         <div>
