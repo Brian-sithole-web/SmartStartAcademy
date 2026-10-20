@@ -133,9 +133,21 @@ function initMobileNav() {
     return;
   }
 
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
+  const setMenuOpen = (open) => {
+    nav.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("nav-open", open);
+  };
+
+  toggle.addEventListener("click", () => {
+    setMenuOpen(!nav.classList.contains("is-open"));
+  });
+
+  nav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      setMenuOpen(false);
+    }
   });
 }
 

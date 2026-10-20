@@ -39,6 +39,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: clip;
 }
 
 body {
@@ -402,6 +403,37 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.enrol-copy {
+  container-type: inline-size;
+}
+
+.enrol-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 24px;
+}
+
+.enrol-actions .btn {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+@container (max-width: 602px) {
+  .enrol-actions {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: max-content;
+  }
+
+  .enrol-actions a:last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 .hero-dots {
@@ -1041,6 +1073,14 @@ textarea {
     display: flex;
   }
 
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  body.nav-open .site-header {
+    z-index: 80;
+  }
+
   .header-cta {
     margin: 8px 0 0;
   }
@@ -1052,31 +1092,227 @@ textarea {
   .stats,
   .footer-grid,
   .form-row,
-  .gallery-grid,
-  .photo-mosaic,
   .branch-grid,
   .fee-grid,
   .educator-grid {
     grid-template-columns: 1fr;
   }
 
-  .educator img {
-    height: 520px;
+  .section {
+    padding: 56px 0;
   }
 
-  .photo-mosaic,
-  .photo-mosaic > :first-child {
-    grid-row: auto;
-    height: 240px;
+  .section-head {
+    margin-bottom: 28px;
+  }
+
+  .why-card {
+    min-height: 0;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .site-nav {
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-nav a {
+    padding: 14px 8px;
+    font-size: 1.05rem;
+  }
+
+  .header-cta.btn {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 8px;
+  }
+
+  .hero {
+    min-height: calc(100svh - var(--header-h));
+  }
+
+  .hero-content {
+    width: min(1180px, calc(100% - 32px));
+    padding: 48px 0 72px;
+  }
+
+  .hero-kicker {
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+  }
+
+  .hero .lede {
+    font-size: 1.02rem;
+  }
+
+  .hero-actions,
+  .enrol-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .enrol-actions .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
   }
 
   .hero-dots {
-    right: 20px;
-    bottom: 20px;
+    left: 20px;
+    right: auto;
+    bottom: 18px;
   }
 
-  .section {
-    padding: 72px 0;
+  .motif {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 28px 8px;
+  }
+
+  .split {
+    gap: 36px;
+  }
+
+  .split-images {
+    min-height: 0;
+  }
+
+  .split-images .img-main {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .split-images .img-float {
+    width: 58%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-width: 5px;
+  }
+
+  .team-feature img,
+  .educator img {
+    height: auto;
+    max-height: 420px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .educator img {
+    object-fit: contain;
+    aspect-ratio: auto;
+    max-height: 380px;
+  }
+
+  .photo-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    height: auto;
+  }
+
+  .photo-mosaic a,
+  .photo-mosaic > :first-child {
+    grid-row: auto;
+    grid-column: auto;
+    height: 150px;
+  }
+
+  .photo-mosaic > :first-child {
+    grid-column: 1 / -1;
+    height: 210px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-grid a,
+  .gallery-grid a:nth-child(3n) {
+    height: 160px;
+  }
+
+  .page-hero {
+    min-height: 280px;
+  }
+
+  .page-hero .container {
+    padding: 48px 0 32px;
+  }
+
+  .social-band img {
+    height: 240px;
+  }
+
+  .map-frame,
+  .branch-card .map-frame {
+    min-height: 220px;
+  }
+
+  .program-item img {
+    min-height: 200px;
+    max-height: 240px;
+  }
+
+  .fee-table td {
+    font-size: 1.35rem;
+  }
+
+  .whatsapp-float {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: min(1240px, calc(100% - 28px));
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-text strong {
+    font-size: 0.98rem;
+  }
+
+  .brand-text small {
+    font-size: 0.66rem;
+  }
+
+  .stat {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .photo-mosaic,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-mosaic > :first-child,
+  .photo-mosaic a,
+  .gallery-grid a,
+  .gallery-grid a:nth-child(3n) {
+    grid-column: auto;
+    height: 210px;
   }
 }
 
